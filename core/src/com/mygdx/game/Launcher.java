@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import managers.GameSceneManager;
 import scenes.Home;
+import scenes.Home2;
 
 public class Launcher extends ApplicationAdapter {
 	
@@ -17,7 +18,7 @@ public class Launcher extends ApplicationAdapter {
 		this.gsm = new GameSceneManager();
 		this.sb = new SpriteBatch();
 		
-		this.gsm.push(new Home(this.gsm));
+		this.gsm.push(new Home2(this.gsm));
 	}
 
 	@Override
