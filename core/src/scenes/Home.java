@@ -19,7 +19,11 @@ public class Home extends GameScene {
 		super(gsm);
 		this.cam.setToOrtho(false, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGH);
 		this.setBackground(Resizer.resize("PNG/home.png"));
+<<<<<<< Updated upstream
 		this.setSceneMusic("homeMusic.mp3");
+=======
+        this.setSceneMusic("homeMusic.mp3");
+>>>>>>> Stashed changes
 		if (Constants.PLAY_MUSIC) {
 			this.sceneMusic.play();}
 		String fontPath = "fonts/AgentOrange.ttf";
