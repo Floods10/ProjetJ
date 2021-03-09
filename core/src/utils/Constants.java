@@ -5,8 +5,8 @@ public class Constants {
 //	public final static int VIEWPORT_WIDTH = 760;
 //	public final static int VIEWPORT_HEIGH = 1280;
 
-	public final static int WINDOW_WIDTH = 1000;
-	public final static int WINDOW_HEIGH =600;
+	public final static int WINDOW_WIDTH = 1500;
+	public final static int WINDOW_HEIGH =900;
 	
 	public final static boolean PLAY_MUSIC = true;;
 	

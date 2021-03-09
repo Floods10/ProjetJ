@@ -19,15 +19,14 @@ public class Home extends GameScene {
 		super(gsm);
 		this.cam.setToOrtho(false, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGH);
 		this.setBackground(Resizer.resize("PNG/home.png"));
-
         this.setSceneMusic("homeMusic.mp3");
-
 		if (Constants.PLAY_MUSIC) {
 			this.sceneMusic.play();}
+		
 		String fontPath = "fonts/AgentOrange.ttf";
-		this.startText = new GuiElement(null, 250, fontPath, "Commencer", 32);  
-		this.quitText = new GuiElement(null, 150, fontPath, "Quitter", 32);
-		this.gameTitleText = new GuiElement(null, 450, fontPath, Constants.GAME_TITLE, 80);	
+		this.startText = new GuiElement(null, 400, fontPath, "Commencer", 32);  
+		this.quitText = new GuiElement(null, 300, fontPath, "Quitter", 32);
+		this.gameTitleText = new GuiElement(null, 650, fontPath, Constants.GAME_TITLE, 100);	
 	}
 
 	@Override
