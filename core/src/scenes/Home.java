@@ -18,8 +18,8 @@ public class Home extends GameScene {
 	public Home(GameSceneManager gsm) {
 		super(gsm);
 		this.cam.setToOrtho(false, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGH);
-		this.setBackground(Resizer.resize("C:\\Users\\utilisateur\\eclipse-workspace\\ProjetJordan\\core\\assets\\PNG\\home.png"));
-		this.setSceneMusic("C:\\Users\\utilisateur\\eclipse-workspace\\ProjetJordan\\core\\assets\\homeMusic.mp3");
+		this.setBackground(Resizer.resize("PNG/home.png"));
+		this.setSceneMusic("homeMusic.mp3");
 		if (Constants.PLAY_MUSIC) {
 			this.sceneMusic.play();}
 		String fontPath = "fonts/AgentOrange.ttf";
