@@ -13,15 +13,15 @@ import scenes.PlayScene;
 import utils.Constants;
 import utils.Transform;
 
-public class Monstre extends GameObject{
+public class Monstre extends Vivant{
 
-	private Circle body;
+	//private Circle body;
 	private GameObject nearestBonus;
 	private GameObject nearestEnnemis;
 
 
 	public Monstre(GameScene scene, float x, float y, Array<String> tags) {
-		super(scene, tags);
+		super(scene, Constants.VIE_MONSTRE, Constants.ATTAQUE_MONSTRE, Constants.VITESSE_MONSTRE, tags);
 		this.texture = new Texture("PNG/greenery_2.png");
 		this.transform = new Transform(new Vector2(x, y));
 		float radius = Math.min(this.texture.getHeight(),this.texture.getWidth())/2;
@@ -32,7 +32,10 @@ public class Monstre extends GameObject{
 		this(scene, x, y, new Array<String>());
 	}
 
+@Override
 	public void update(float dt) {
+		super.update(dt); // Appelle le update de Vivant ==> de Game Object
+		
 		System.out.println("update monstre");
 		
 		nearestBonus = this.nearest("bonus");
@@ -83,18 +86,7 @@ public class Monstre extends GameObject{
 		this.texture.dispose();
 	}
 
-	public void moveRight() {
-		this.transform.setX(this.transform.getX()+Constants.SPEED * Gdx.graphics.getDeltaTime());
-	}
-	public void moveLeft() {
-		this.transform.setX(this.transform.getX()-Constants.SPEED * Gdx.graphics.getDeltaTime());
-	}
-	public void moveUp() {
-		this.transform.setY(this.transform.getY()+Constants.SPEED * Gdx.graphics.getDeltaTime());
-	}
-	public void moveDown() {
-		this.transform.setY(this.transform.getY()-Constants.SPEED * Gdx.graphics.getDeltaTime());
-	}
+	
 
 	public Circle getBody() {
 		return body;

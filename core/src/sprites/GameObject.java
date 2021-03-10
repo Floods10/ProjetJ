@@ -16,17 +16,25 @@ public abstract class GameObject {
 	protected Texture texture;
 	protected Transform transform;
 	protected Array<String> tags;
+	protected boolean isDead ;
 	
 
 	public GameObject() {}
 	
-	public GameObject(GameScene scene, Array<String> tags) {
+	public GameObject(GameScene scene, Array<String> tags ) {
 		this.scene = scene;
 		this.tags = tags;
 		this.scene.gameObjects.add(this);
+		this.isDead = false ;
 	}
 	
-	public abstract void update(float dt);
+	public void update(float dt)
+	{
+		if(isDead)
+		{
+			this.scene.gameObjects.removeValue(this, false);
+		}
+	}
 	
 	public void draw(SpriteBatch sb) {
 		sb.draw(this.getTexture(), this.getTexturePosition().x, this.getTexturePosition().y);

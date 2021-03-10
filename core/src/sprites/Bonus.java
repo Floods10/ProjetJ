@@ -42,7 +42,7 @@ public class Bonus extends GameObject {
 
 	
 	public void update(float dt) {	
-		
+		super.update(dt);
 	}
 	
 	@Override

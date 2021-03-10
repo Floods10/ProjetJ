@@ -8,7 +8,7 @@ public class Constants {
 	public final static int WINDOW_WIDTH = 1500;
 	public final static int WINDOW_HEIGH =900;
 	
-	public final static boolean PLAY_MUSIC = true;;
+	public final static boolean PLAY_MUSIC = false;;
 	
 	public final static int PAD = 10;
 	
@@ -25,4 +25,12 @@ public class Constants {
 
 	
 	public final static String GAME_TITLE = "Projet";
+	
+	public final static float VIE_MONSTRE = 50.0f ;
+	public final static float ATTAQUE_MONSTRE = 10.0f ;
+	public final static float VITESSE_MONSTRE = 1.5f ;
+	
+	public final static float VIE_HEROS = 250.0f ;
+	public final static float ATTAQUE_HEROS = 20.0f ;
+	public final static float VITESSE_HEROS = 2.5f ;
 }

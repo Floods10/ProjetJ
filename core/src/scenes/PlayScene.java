@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import managers.GameSceneManager;
 import sprites.Bonus;
 import sprites.GameObject;
+import sprites.Heros;
 import sprites.Monstre;
 import utils.Constants;
 import utils.Resizer;
@@ -28,6 +29,7 @@ public class PlayScene extends GameScene {
 	private Array<String> tagsE1;
 	private Array<String> tagsE2;
 	private Array<String> tags;
+	private Heros heros;
 	
 	public PlayScene(GameSceneManager gsm) {
 		super(gsm);
@@ -48,6 +50,7 @@ public class PlayScene extends GameScene {
 		
 		this.monstres.add(new Monstre(this, 300, 300, tagsE1));
 		this.bonuss = new Array<Bonus>();
+		this.heros = new Heros(this, tagsE1);
 	}
 
 	@Override
