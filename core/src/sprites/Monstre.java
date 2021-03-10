@@ -32,11 +32,10 @@ public class Monstre extends Vivant{
 		this(scene, x, y, new Array<String>());
 	}
 
-@Override
+	@Override
 	public void update(float dt) {
 		super.update(dt); // Appelle le update de Vivant ==> de Game Object
 		
-		System.out.println("update monstre");
 		
 		nearestBonus = this.nearest("bonus");
 		if(this.tags.contains("Equipe1", false)) {
@@ -52,19 +51,9 @@ public class Monstre extends Vivant{
 			this.moveToward(nearestEnnemis);
 		}
 
-		
-		for (Iterator<Bonus> iter = ((PlayScene)this.scene).getBonuss().iterator(); iter.hasNext(); ) {
-			Bonus bonus = iter.next();
-
-			if(bonus.overlaps(this.getBody())) {
-				bonus.playDisparitionSound();
-				this.scene.gameObjects.removeValue(bonus, false);
-				iter.remove();
-			}	
-		}
 
 
-
+/*
 		if(this.transform.getY() < Constants.MIN_Y) {
 			this.transform.setY(Constants.MIN_Y);
 		}
@@ -77,12 +66,13 @@ public class Monstre extends Vivant{
 		else if(this.transform.getX() < Constants.MIN_X) {
 			this.transform.setX(Constants.MIN_X);
 		}
-
-		this.body.setPosition(this.transform.getPosition());
+*/
+		
 	}
 
 	@Override
 	public void dispose() {
+		super.dispose();
 		this.texture.dispose();
 	}
 
@@ -92,5 +82,11 @@ public class Monstre extends Vivant{
 		return body;
 	}
 
+	@Override
+	public String toString() {
+		return "Monstre [vie=" + vie + ", attaque=" + attaque + ", vitesse=" + vitesse + ", texture=" + texture
+				+ ", tags=" + tags + ", isDead=" + isDead + "]";
+	}
 
+	
 }

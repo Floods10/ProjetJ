@@ -42,9 +42,9 @@ public class PlayScene extends GameScene {
 		this.monstres2 = new Array<Monstre>();
 		
 		tagsE1 = new Array<String>();
-		tagsE1.add("Equipe1");
+		tagsE1.add("Equipe 1");
 		tagsE2 = new Array<String>();
-		tagsE2.add("Equipe2");
+		tagsE2.add("Equipe 2");
 		tags = new Array<String>();
 		tags.add("bonus");
 		

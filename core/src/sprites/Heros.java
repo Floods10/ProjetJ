@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
+import gui.GuiElement;
 import scenes.GameScene;
 import scenes.Home;
 import utils.Constants;
@@ -23,6 +24,7 @@ public final class Heros extends Vivant {
 		this.transform = new Transform(new Vector2(x, y)); // position initiale du heros
 		float radius = Math.min(this.texture.getHeight(),this.texture.getWidth())/2;
 		this.body = new Circle(this.transform.getPosition(), radius);	
+		
 	}
 
 	public Heros(GameScene scene, Array<String> tags) 
@@ -38,6 +40,7 @@ public final class Heros extends Vivant {
 	@Override
 	public void dispose() 
 	{
+		super.dispose();
 		this.texture.dispose();
 	}
 
@@ -46,6 +49,7 @@ public final class Heros extends Vivant {
 	{
 		super.update(dt); //isDead
 		handleInput();
+		
 	}
 
 
@@ -58,16 +62,22 @@ public final class Heros extends Vivant {
 	}
 
 	public void moveRight() {
-		this.transform.setX(this.transform.getX()+Constants.SPEED * Gdx.graphics.getDeltaTime());
+		this.transform.setX(this.transform.getX()+this.vitesse * Constants.SPEED * Gdx.graphics.getDeltaTime());
 	}
 	public void moveLeft() {
-		this.transform.setX(this.transform.getX()-Constants.SPEED * Gdx.graphics.getDeltaTime());
+		this.transform.setX(this.transform.getX()-this.vitesse * Constants.SPEED * Gdx.graphics.getDeltaTime());
 	}
 	public void moveUp() {
-		this.transform.setY(this.transform.getY()+Constants.SPEED * Gdx.graphics.getDeltaTime());
+		this.transform.setY(this.transform.getY()+this.vitesse * Constants.SPEED * Gdx.graphics.getDeltaTime());
 	}
 	public void moveDown() {
-		this.transform.setY(this.transform.getY()-Constants.SPEED * Gdx.graphics.getDeltaTime());
+		this.transform.setY(this.transform.getY()-this.vitesse * Constants.SPEED * Gdx.graphics.getDeltaTime());
+	}
+
+	@Override
+	public String toString() {
+		return "Heros [vie=" + vie + ", attaque=" + attaque + ", vitesse=" + vitesse + ", texture=" + texture
+				+ ", tags=" + tags + ", isDead=" + isDead + "]";
 	}
 
 }

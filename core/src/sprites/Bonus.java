@@ -64,6 +64,9 @@ public class Bonus extends GameObject {
 	public void playApparitionSound() {
 		this.apparitionSound.play();
 	}
+	public Circle getBody() {
+		return body;
+	}
 
 	
 	

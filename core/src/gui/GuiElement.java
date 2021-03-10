@@ -36,6 +36,30 @@ public class GuiElement {
 		realY = (y==null)? (int)(Constants.WINDOW_HEIGH-this.glyph.width)/2 : (int)y;
 		this.transform = new Transform(realX, realY);
 	}
+
+	public GuiElement(Float x, Float y, String fontPath, String text, int sizeText) {
+		float realX=0, realY=0;
+		this.generator = new FreeTypeFontGenerator(Gdx.files.internal(fontPath));
+		this.parameter = new FreeTypeFontParameter();
+		this.parameter.size=sizeText;
+		this.font = this.generator.generateFont(this.parameter);
+		this.glyph = new GlyphLayout();
+		this.glyph.setText(this.font, text);
+		realX = (x==null)? (float)(Constants.WINDOW_WIDTH-this.glyph.width)/2 : (float)x;
+		realY = (y==null)? (float)(Constants.WINDOW_HEIGH-this.glyph.width)/2 : (float)y;
+		this.transform = new Transform(realX, realY);
+	}
+	public GuiElement(String fontPath, String text, int sizeText) {
+		
+		this.generator = new FreeTypeFontGenerator(Gdx.files.internal(fontPath));
+		this.parameter = new FreeTypeFontParameter();
+		this.parameter.size=sizeText;
+		this.font = this.generator.generateFont(this.parameter);
+		this.glyph = new GlyphLayout();
+		this.glyph.setText(this.font, text);
+		this.transform = new Transform(0, 0);
+	}
+
 	public float getWidth() {
 		return this.glyph.width;
 	}
@@ -69,7 +93,15 @@ public class GuiElement {
 	public void setTexture(Texture texture) {
 		this.texture = texture;
 	}
+
+
+	public void setTransform(float x, float y) {
+		this.transform.setPosition(x, y);
+	}
 	
+	public void setText(String text) {
+		this.glyph.setText(this.font, text);
+	}
 	
 
 }

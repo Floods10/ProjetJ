@@ -20,7 +20,7 @@ public class Constants {
 	
 	public final static int SPEED = 200;
 	
-	public final static int MAX_BONUS = 10;
+	public final static int MAX_BONUS = 100;
 	public final static float TIME_BONUS = 0.10f;
 
 	
