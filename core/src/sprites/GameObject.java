@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
+import gui.GuiElement;
 import scenes.GameScene;
 import utils.Constants;
 import utils.Transform;
@@ -18,6 +19,8 @@ public abstract class GameObject {
 	protected Array<String> tags;
 	protected boolean isDead ;
 	
+	protected GuiElement text;
+	
 
 	public GameObject() {}
 	
@@ -26,21 +29,35 @@ public abstract class GameObject {
 		this.tags = tags;
 		this.scene.gameObjects.add(this);
 		this.isDead = false ;
+		this.text = new GuiElement("fonts/orange juice 2.0.ttf", "", 24); 
 	}
 	
 	public void update(float dt)
-	{
+	{	
+		
 		if(isDead)
 		{
 			this.scene.gameObjects.removeValue(this, false);
+		}
+		else {
+			if (this.text!=null) {
+				this.text.setTransform(this.transform.getX(), this.transform.getY()+1.2f*this.texture.getHeight()/2);
+			}
 		}
 	}
 	
 	public void draw(SpriteBatch sb) {
 		sb.draw(this.getTexture(), this.getTexturePosition().x, this.getTexturePosition().y);
+		if (this.text!=null) {
+			this.text.draw(sb);
+		}
 	}
 	
-	public abstract void dispose();
+	public void dispose() {
+		if (this.text!=null) {
+			this.text.dispose();
+		}
+	}
 	
 	public void moveToward(GameObject go) {
 		if (go!=null) {

@@ -22,6 +22,9 @@ public class Transform {
 	public Transform(int x, int y) {
 		this(new Vector2(x,y), 0.0f, 1.0f);
 	}
+	public Transform(float x, float y) {
+		this(new Vector2(x,y), 0.0f, 1.0f);
+	}
 
 	public Vector2 getPosition() {
 		return position;
