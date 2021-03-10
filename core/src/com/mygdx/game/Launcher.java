@@ -18,7 +18,7 @@ public class Launcher extends ApplicationAdapter {
 		this.gsm = new GameSceneManager();
 		this.sb = new SpriteBatch();
 		
-		this.gsm.push(new Home2(this.gsm));
+		this.gsm.push(new Home(this.gsm));
 	}
 
 	@Override
