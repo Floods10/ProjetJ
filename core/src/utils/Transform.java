@@ -19,7 +19,7 @@ public class Transform {
 	public Transform(Vector2 position) {
 		this(position, 0.0f, 1.0f);
 	}
-	public Transform(int x, int y) {
+	public Transform(float x, float y) {
 		this(new Vector2(x,y), 0.0f, 1.0f);
 	}
 	public Transform(float x, float y) {
