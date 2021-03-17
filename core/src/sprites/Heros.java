@@ -56,6 +56,11 @@ public final class Heros extends Vivant {
 		{
 			this.attaqueEpee();
 		}
+		
+		if(Gdx.input.isKeyJustPressed(Input.Keys.G))
+		{
+			this.bouleDeFeu();
+		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 			

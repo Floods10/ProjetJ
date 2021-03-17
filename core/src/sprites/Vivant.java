@@ -68,6 +68,11 @@ public abstract class Vivant extends GameObject {
 		new Epee(this);
 	}
 	
+	public void bouleDeFeu()
+	{
+		BouleDeFeu fireBall = new BouleDeFeu(this);
+	}
+	
 	public void attaquer(Vivant v)
 	{
 		super.attaquer(v, v.attaque);
