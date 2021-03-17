@@ -1,5 +1,7 @@
 package sprites;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,7 +19,7 @@ public final class Heros extends Vivant {
 
 	//private Circle body;
 
-	public Heros(GameScene scene, float x, float y, Array<String> tags) {
+	public Heros(GameScene scene, float x, float y, HashMap<String, String> tags) {
 		super(scene, Constants.VIE_HEROS, Constants.ATTAQUE_HEROS, Constants.VITESSE_HEROS, tags);
 		this.texture = new Texture("PNG/stones_6.png");
 		this.transform = new Transform(new Vector2(x, y)); // position initiale du heros
@@ -25,7 +27,7 @@ public final class Heros extends Vivant {
 		this.body = new Circle(this.transform.getPosition(), radius);	
 	}
 
-	public Heros(GameScene scene, Array<String> tags) {
+	public Heros(GameScene scene, HashMap<String, String> tags) {
 		this(scene, Constants.WINDOW_WIDTH/4, Constants.WINDOW_HEIGH/2, tags);
 	}
 

@@ -1,4 +1,6 @@
 package sprites;
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,7 +19,8 @@ public abstract class GameObject {
 	protected GameScene scene;
 	protected Texture texture;
 	protected Transform transform;
-	protected Array<String> tags;
+	//protected Array<String> tags;
+	protected HashMap<String, String> tags;
 	protected boolean isDead;
 	protected float masse;
 	protected Vector2 force;
@@ -27,7 +30,7 @@ public abstract class GameObject {
 
 	public GameObject() {}
 	
-	public GameObject(GameScene scene, Array<String> tags ) {
+	public GameObject(GameScene scene, HashMap<String, String> tags ) {
 		this.scene = scene;
 		this.tags = tags;
 		this.scene.gameObjects.add(this);
@@ -81,7 +84,7 @@ public abstract class GameObject {
 		}
 	}
 	
-	public GameObject nearest(String tag) {
+	public GameObject nearest(String tagKey, String tagValue) {
 		Array<GameObject> lgo = this.scene.gameObjects;
 		GameObject tmp = null;
 		float min=0, dist;
@@ -90,7 +93,7 @@ public abstract class GameObject {
 		
 		if (lgo.size>1) {
 			do {
-				if ((lgo.get(i).tags.contains(tag,false) || tag.equals("")) && !lgo.get(i).equals(this)) {
+				if (lgo.get(i).tags.get(tagKey).equals(tagValue) && !lgo.get(i).equals(this)) {
 					if (!minGot) {
 						min = this.transform.getPosition().dst(lgo.get(i).transform.getPosition());
 						tmp = lgo.get(i);
