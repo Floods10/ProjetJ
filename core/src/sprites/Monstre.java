@@ -67,7 +67,7 @@ public class Monstre extends Vivant{
 			this.transform.setX(Constants.MIN_X);
 		}
 */
-		
+		updatePosition(dt);
 	}
 
 	@Override

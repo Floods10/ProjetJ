@@ -48,7 +48,7 @@ public class PlayScene extends GameScene {
 		tags = new Array<String>();
 		tags.add("bonus");
 		
-		this.monstres.add(new Monstre(this, 300, 300, tagsE1));
+		this.monstres.add(new Monstre(this, 900, 900, tagsE1));
 		this.bonuss = new Array<Bonus>();
 		this.heros = new Heros(this, tagsE1);
 	}
@@ -57,11 +57,11 @@ public class PlayScene extends GameScene {
 	protected void handleInput() {
 		
 		if(Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
-			this.monstres.add(new Monstre(this, 300, 300, tagsE1));
+			this.monstres.add(new Monstre(this, 900, 900, tagsE1));
 		}
 		if(Gdx.input.isKeyJustPressed(Input.Keys.S)) {
 			System.out.println("S");
-			this.monstres2.add(new Monstre(this, 300, 300, tagsE2));
+			this.monstres2.add(new Monstre(this, 900, 900, tagsE2));
 			this.monstres2.get(this.monstres2.size-1).setTexture(new Texture("PNG/greenery_10.png"));
 		}
 		
@@ -85,7 +85,9 @@ public class PlayScene extends GameScene {
 		if(false || ((TimeUtils.millis() - lastBonusTime)/1000 > Constants.TIME_BONUS && bonuss.size<Constants.MAX_BONUS)) {
 			this.lastBonusTime = TimeUtils.millis();
 			bonuss.add(new Bonus(this, MathUtils.random(0, Constants.MAX_X), MathUtils.random(0, Constants.MAX_Y),tags));
-			bonuss.get(bonuss.size-1).playApparitionSound();
+			if(Constants.PLAY_SOUND) {
+				bonuss.get(bonuss.size-1).playApparitionSound();
+			}
 		}
 	
 	}
