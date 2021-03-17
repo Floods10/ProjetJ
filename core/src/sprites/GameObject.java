@@ -47,8 +47,8 @@ public abstract class GameObject {
 		else {
 			if (this.text!=null) {
 				this.text.setTransform(this.transform.getX(), this.transform.getY()+1.2f*this.texture.getHeight()/2);
-			this.force.setZero();
 			}
+			this.force.setZero();
 		}
 	}
 	public void updatePosition(float dt)
@@ -149,7 +149,30 @@ public abstract class GameObject {
 	public void setY(float y) {
 		this.transform.setY(y);
 	}
+
+	public Transform getTransform() {
+		return transform;
+	}
+
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+	
+	public void rebond(GameObject go) {
+		Vector2 direction = new Vector2(go.getPosition());
+		direction.sub(this.getPosition());
+		direction.nor();
+		direction.scl(-1 * Constants.COEFF_REBOND * Gdx.graphics.getDeltaTime());
+		direction.add(this.getPosition());
+		this.force=direction;
+		
+	}
     
+	public void attaquer(Vivant v, float attaque)
+	{
+		v.decreaseLife(attaque);
+	}
+	
 	/*
 	public void setPosition(Vector2 position) {
 		this.newtonPhysic.setPosition(position);

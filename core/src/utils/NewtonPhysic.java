@@ -3,6 +3,7 @@ package utils;
 import com.badlogic.gdx.math.Vector2;
 
 import sprites.GameObject;
+import sprites.Monstre;
 
 public class NewtonPhysic {
 
@@ -28,10 +29,13 @@ public class NewtonPhysic {
 		this.v_n_1 = new Vector2(0, 0);
 	}
 	public void updatePosition(float dt) {
-
 		a_n.x = go.getForce().x/go.getMasse();
 		a_n.y = go.getForce().y/go.getMasse();
-
+		if(go instanceof Monstre)
+		{
+			System.out.println("FLAG1  XN ="+x_n+"\n"+go.getForce());
+		}
+		
 		Vector2 frottement = new Vector2(v_n);
 		frottement.nor();
 		frottement.scl(-Constants.FRICTION*v_n.len()/go.getMasse());
@@ -48,7 +52,10 @@ public class NewtonPhysic {
 
 		go.setPosition(x_n);
 
-
+		if(go instanceof Monstre)
+		{
+			System.out.println("FLAG2  XN ="+x_n);
+		}
 
 	}
 
