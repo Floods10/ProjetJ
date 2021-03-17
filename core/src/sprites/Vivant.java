@@ -31,6 +31,10 @@ public abstract class Vivant extends GameObject {
 		
 	}
 	
+	public Circle getBody() {
+		return body;
+	}
+	
 	public float getVie() {
 		return vie;
 	}
@@ -58,9 +62,14 @@ public abstract class Vivant extends GameObject {
 	}
 
 
+	public void attaqueEpee()
+	{
+		Epee epee = new Epee(this);
+	}
+	
 	public void attaquer(Vivant v)
 	{
-		v.decreaseLife(this.attaque);
+		super.attaquer(v, v.attaque);
 	}
 	public void attraperBonus(Bonus b) 
 	{
@@ -98,7 +107,7 @@ public abstract class Vivant extends GameObject {
 		direction.scl(-1 * Constants.COEFF_REBOND * Gdx.graphics.getDeltaTime());
 		direction.add(this.getPosition());
 		this.force=direction;
-		
+
 	}
 	@Override
 	public void update(float dt)

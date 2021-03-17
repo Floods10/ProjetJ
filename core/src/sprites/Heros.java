@@ -50,6 +50,11 @@ public final class Heros extends Vivant {
 
 	public void handleInput() 
 	{
+		if(Gdx.input.isKeyJustPressed(Input.Keys.F))
+		{
+			this.attaqueEpee();
+		}
+
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 			
 			if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
@@ -76,7 +81,8 @@ public final class Heros extends Vivant {
 				this.force.nor();
 				this.force.scl(Constants.ACCELERATION);
 			}
-		} else {
+		} 
+		else {
 			this.force.setZero();
 		}
 	}
