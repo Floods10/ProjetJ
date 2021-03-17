@@ -1,5 +1,6 @@
 package sprites;
 
+import java.util.HashMap;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
@@ -18,7 +19,7 @@ public abstract class Vivant extends GameObject {
 	protected Circle body;
 	
 	
-	public Vivant(GameScene scene, float vie, float attaque, float vitesse, Array<String> tags) {
+	public Vivant(GameScene scene, float vie, float attaque, float vitesse, HashMap<String, String> tags) {
 		super(scene, tags);
 		this.vie = vie;
 		this.attaque = attaque;
@@ -64,7 +65,7 @@ public abstract class Vivant extends GameObject {
 
 	public void attaqueEpee()
 	{
-		Epee epee = new Epee(this);
+		new Epee(this);
 	}
 	
 	public void attaquer(Vivant v)
@@ -77,9 +78,6 @@ public abstract class Vivant extends GameObject {
 		if(Constants.PLAY_SOUND) {
 		    b.playDisparitionSound();
 		}
-		//Coder bonus
-		
-		// Supprimer le bonus de la liste des GO
 	}
 	public void increaseLife(float valeurBonus) 
 	{
@@ -123,7 +121,7 @@ public abstract class Vivant extends GameObject {
 				{
 					if(((Vivant) lgo.get(i)).body.overlaps(this.body)) {
 						rebond((Vivant) lgo.get(i));
-						if(!lgo.get(i).tags.contains(this.tags.get(0), false)) { // A finir: ca marche que s'il y a un seul tag dans tags
+						if(!lgo.get(i).tags.get("equipe").equals(this.tags.get("equipe"))) {
 							
 							this.attaquer(((Vivant) lgo.get(i)));
 							System.out.println(">>>>>>>"+this.getClass());

@@ -1,5 +1,6 @@
 package scenes;
 
+import java.util.HashMap;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
@@ -26,9 +27,10 @@ public class PlayScene extends GameScene {
 	private Array<Bonus> bonuss;
 	private long lastBonusTime;
 	
-	private Array<String> tagsE1;
-	private Array<String> tagsE2;
-	private Array<String> tags;
+	private HashMap<String, String> tagsE1;
+	private HashMap<String, String> tagsE2;
+	private HashMap<String, String> tags;
+	
 	private Heros heros;
 	
 	public PlayScene(GameSceneManager gsm) {
@@ -40,13 +42,15 @@ public class PlayScene extends GameScene {
 		
 		this.monstres = new Array<Monstre>();
 		this.monstres2 = new Array<Monstre>();
+	
+		tagsE1 = new HashMap<String, String>();
+		tagsE1.put("equipe", "Equipe1");
+		tagsE2 = new HashMap<String, String>();
+		tagsE2.put("equipe", "Equipe2");
+		tags = new HashMap<String, String>();
+		tags.put("equipe", "bonus");;
 		
-		tagsE1 = new Array<String>();
-		tagsE1.add("Equipe 1");
-		tagsE2 = new Array<String>();
-		tagsE2.add("Equipe 2");
-		tags = new Array<String>();
-		tags.add("bonus");
+		
 		
 		this.monstres.add(new Monstre(this, 900, 900, tagsE1));
 		this.bonuss = new Array<Bonus>();
@@ -66,13 +70,6 @@ public class PlayScene extends GameScene {
 		}
 		
 		if(Gdx.input.isKeyPressed(Input.Keys.A)) {this.gsm.set(new Home(this.gsm));}
-		/*if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {this.monstre.moveLeft();}
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {this.monstre.moveRight();}
-		if(Gdx.input.isKeyPressed(Input.Keys.UP)) {this.monstre.moveUp();;}
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) {this.monstre.moveDown();}*/
-		
-		//if(Gdx.input.isKeyPressed(Input.Keys.W)) {this.monstre.setPosition(0.0f, 0.0f);}
-		//if(Gdx.input.isKeyPressed(Input.Keys.X)) {this.monstre.setPosition(64.0f, 64.0f);}
 	}
 
 	@Override
@@ -84,12 +81,11 @@ public class PlayScene extends GameScene {
 		
 		if(false || ((TimeUtils.millis() - lastBonusTime)/1000 > Constants.TIME_BONUS && bonuss.size<Constants.MAX_BONUS)) {
 			this.lastBonusTime = TimeUtils.millis();
-			bonuss.add(new Bonus(this, MathUtils.random(0, Constants.MAX_X), MathUtils.random(0, Constants.MAX_Y),tags));
+			bonuss.add(new Bonus(this, MathUtils.random(Constants.MIN_Y, Constants.MAX_X), MathUtils.random(Constants.MIN_Y, Constants.MAX_Y),tags));
 			if(Constants.PLAY_SOUND) {
 				bonuss.get(bonuss.size-1).playApparitionSound();
 			}
 		}
-	
 	}
 
 	@Override
@@ -100,7 +96,6 @@ public class PlayScene extends GameScene {
 			go.draw(sb);
 		}
 		sb.end();
-
 	}
 
 	@Override

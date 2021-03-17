@@ -1,5 +1,7 @@
 package sprites;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,10 +23,10 @@ public class Bonus extends GameObject {
 	private Circle body;
 	private long lastBonusTime;
 	private Array<Bonus> bonuss;
-	private Array<String> tags = new Array<String>();
+	private HashMap<String, String> tags;
 	
 
-	public Bonus(GameScene scene, float x, float y, Array<String> tags) {
+	public Bonus(GameScene scene, float x, float y, HashMap<String, String> tags) {
 		super(scene, tags);
 		this.texture = new Texture(Gdx.files.internal("PNG/decor_7.png"));
 		this.apparitionSound = Gdx.audio.newSound(Gdx.files.internal("appearBonusSound.wav"));
@@ -33,11 +35,11 @@ public class Bonus extends GameObject {
 		this.body = new Circle();
 		this.body.radius = Math.min(texture.getHeight(),texture.getWidth())/2;
 	    this.body.setPosition(this.transform.getPosition());
-	    tags.add("bonus");
+
 	    
 	}
 	public Bonus(GameScene scene, float x, float y) {
-		this(scene, x, y, new Array<String>());
+		this(scene, x, y, new HashMap<String, String>());
 	}
 
 	
