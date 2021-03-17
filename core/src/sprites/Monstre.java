@@ -1,5 +1,6 @@
 package sprites;
 
+import java.util.HashMap;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
@@ -20,7 +21,7 @@ public class Monstre extends Vivant{
 	private GameObject nearestEnnemis;
 
 
-	public Monstre(GameScene scene, float x, float y, Array<String> tags) {
+	public Monstre(GameScene scene, float x, float y, HashMap<String, String> tags) {
 		super(scene, Constants.VIE_MONSTRE, Constants.ATTAQUE_MONSTRE, Constants.VITESSE_MONSTRE, tags);
 		this.texture = new Texture("PNG/greenery_2.png");
 		this.transform = new Transform(new Vector2(x, y));
@@ -29,7 +30,7 @@ public class Monstre extends Vivant{
 	}
 
 	public Monstre(GameScene scene, float x, float y) {
-		this(scene, x, y, new Array<String>());
+		this(scene, x, y, new HashMap<String, String>());
 	}
 
 	@Override
@@ -37,12 +38,12 @@ public class Monstre extends Vivant{
 		super.update(dt); // Appelle le update de Vivant ==> de Game Object
 		
 		
-		nearestBonus = this.nearest("bonus");
-		if(this.tags.contains("Equipe1", false)) {
-			nearestEnnemis = this.nearest("Equipe2");
+		nearestBonus = this.nearest("equipe", "bonus");
+		if(this.tags.get("equipe").equals("Equipe1")) {
+			nearestEnnemis = this.nearest("equipe", "Equipe2");
 		}
-		if(this.tags.contains("Equipe2", false)) {
-			nearestEnnemis = this.nearest("Equipe1");
+		if(this.tags.get("equipe").equals("Equipe2")) {
+			nearestEnnemis = this.nearest("equipe", "Equipe1");
 		}
 		if (nearestBonus!=null) {
 			this.moveToward(nearestBonus);
@@ -51,22 +52,6 @@ public class Monstre extends Vivant{
 			this.moveToward(nearestEnnemis);
 		}
 
-
-
-/*
-		if(this.transform.getY() < Constants.MIN_Y) {
-			this.transform.setY(Constants.MIN_Y);
-		}
-		else if(this.transform.getY() > Constants.MAX_Y) {
-			this.transform.setY(Constants.MAX_Y);
-		}
-		else if(this.transform.getX() > Constants.MAX_X) {
-			this.transform.setX(Constants.MAX_X);
-		}
-		else if(this.transform.getX() < Constants.MIN_X) {
-			this.transform.setX(Constants.MIN_X);
-		}
-*/
 		updatePosition(dt);
 	}
 

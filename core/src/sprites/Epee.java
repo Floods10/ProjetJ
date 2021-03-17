@@ -20,7 +20,7 @@ public class Epee extends Attaque {
 	public Epee(Vivant owner) 
 	{
 		super(1, owner);
-		this.texture = new Texture("PNG/sprite_epee.png");
+		this.texture = new Texture("PNG/greenery_2.png");
 		//deltaX et Y correspondent a la différence entre le x de l'owner et le x de l'épée
 		double deltaX = Math.cos(((owner.getTransform().getRotation()-90) /360*2*Math.PI)%(2*Math.PI)) * (owner.getBody().radius/2) + (this.texture.getHeight()/2);
 		double deltaY = Math.sin(((owner.getTransform().getRotation()-90) /360*2*Math.PI)%(2*Math.PI)) * (owner.getBody().radius/2) + (this.texture.getHeight()/2);		
