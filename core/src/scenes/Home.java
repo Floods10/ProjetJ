@@ -18,7 +18,7 @@ public class Home extends GameScene {
 
 	static Texture exitButtonActive = new Texture("PNG/exit_unclick.png");
 	static Texture startButtonActive = new Texture("PNG/start_unclick.png");
-	private static final int EXIT_BUTTON_Y = 150;
+	private static final int EXIT_BUTTON_Y = 500;
 	private static final int EXIT_BUTTON_X = (Constants.WINDOW_WIDTH/2)-(exitButtonActive.getWidth()/2);
 
 	//Texture exitButtonInactive;
@@ -32,11 +32,11 @@ public class Home extends GameScene {
 			this.sceneMusic.play();}
 
 		String fontPath = "fonts/AgentOrange.ttf";
-		this.startText = new GuiElement(EXIT_BUTTON_X-10, EXIT_BUTTON_Y+170, fontPath, "", 32);  
+		this.startText = new GuiElement(EXIT_BUTTON_X-10, EXIT_BUTTON_Y+170, fontPath, "", 200);  
 		this.startText.setTexture(startButtonActive);
-		this.quitText = new GuiElement(EXIT_BUTTON_X,EXIT_BUTTON_Y, fontPath, "", 32);
+		this.quitText = new GuiElement(EXIT_BUTTON_X,EXIT_BUTTON_Y, fontPath, "", 200);
 		this.quitText.setTexture(exitButtonActive);
-		this.gameTitleText = new GuiElement(null, 640, fontPath, Constants.GAME_TITLE, 100);
+		this.gameTitleText = new GuiElement(null, EXIT_BUTTON_Y+750, fontPath, Constants.GAME_TITLE, 180);
 
 	}
 

@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 import gui.GuiElement;
 import scenes.GameScene;
 import utils.Constants;
+import utils.NewtonPhysic;
 import utils.Transform;
 
 
@@ -17,10 +18,12 @@ public abstract class GameObject {
 	protected Texture texture;
 	protected Transform transform;
 	protected Array<String> tags;
-	protected boolean isDead ;
-	
+	protected boolean isDead;
+	protected float masse;
+	protected Vector2 force;
 	protected GuiElement text;
 	
+	protected NewtonPhysic newtonPhysic = new NewtonPhysic(this);
 
 	public GameObject() {}
 	
@@ -29,7 +32,9 @@ public abstract class GameObject {
 		this.tags = tags;
 		this.scene.gameObjects.add(this);
 		this.isDead = false ;
-		this.text = new GuiElement("fonts/orange juice 2.0.ttf", "", 24); 
+		this.text = new GuiElement("fonts/orange juice 2.0.ttf", "", 24);
+		this.force = new Vector2(0, 0);
+		this.masse = 20;
 	}
 	
 	public void update(float dt)
@@ -42,8 +47,13 @@ public abstract class GameObject {
 		else {
 			if (this.text!=null) {
 				this.text.setTransform(this.transform.getX(), this.transform.getY()+1.2f*this.texture.getHeight()/2);
+			this.force.setZero();
 			}
 		}
+	}
+	public void updatePosition(float dt)
+	{
+		this.newtonPhysic.updatePosition(dt);
 	}
 	
 	public void draw(SpriteBatch sb) {
@@ -66,7 +76,8 @@ public abstract class GameObject {
 			direction.nor();
 			direction.scl(Constants.SPEED * Gdx.graphics.getDeltaTime());
 			direction.add(this.getPosition());
-			this.setPosition(direction);
+			//this.setPosition(direction);
+			this.force=direction;
 		}
 	}
 	
@@ -98,7 +109,13 @@ public abstract class GameObject {
 	}
 
 
+	public float getMasse() {
+		return masse;
+	}
 
+	public Vector2 getForce() {
+		return force;
+	}
 
 	public void setTexture(Texture texture) {
 		this.texture = texture;
@@ -119,6 +136,7 @@ public abstract class GameObject {
 	public float getY() {
 		return this.transform.getY();
 	}
+	
 	public void setPosition(Vector2 position) {
 		this.transform.setPosition(position);
 	}
@@ -131,6 +149,21 @@ public abstract class GameObject {
 	public void setY(float y) {
 		this.transform.setY(y);
 	}
+    
+	/*
+	public void setPosition(Vector2 position) {
+		this.newtonPhysic.setPosition(position);
+	}
+	public void setPosition(float x, float y) {
+		this.newtonPhysic.setPosition(x, y);
+	}
+	public void setX(float  x) {
+		this.newtonPhysic.setX(x);
+	}
+	public void setY(float y) {
+		this.newtonPhysic.setY(y);
+	}
+	*/
 
 
 }

@@ -1,6 +1,10 @@
 package sprites;
 
+import java.util.Iterator;
+
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 import scenes.GameScene;
@@ -12,6 +16,7 @@ public abstract class Vivant extends GameObject {
 	protected float attaque;
 	protected float vitesse;
 	protected Circle body;
+	
 	
 	public Vivant(GameScene scene, float vie, float attaque, float vitesse, Array<String> tags) {
 		super(scene, tags);
@@ -60,7 +65,9 @@ public abstract class Vivant extends GameObject {
 	public void attraperBonus(Bonus b) 
 	{
 		b.isDead = true ;
-		b.playDisparitionSound();
+		if(Constants.PLAY_SOUND) {
+		    b.playDisparitionSound();
+		}
 		//Coder bonus
 		
 		// Supprimer le bonus de la liste des GO
@@ -84,7 +91,15 @@ public abstract class Vivant extends GameObject {
 	}
 
 		// Vu que vivant est une classe abstraite, pas besoin de coder les methodes update et dispose 
-	
+	public void rebond(Vivant v) {
+		Vector2 direction = new Vector2(v.getPosition());
+		direction.sub(this.getPosition());
+		direction.nor();
+		direction.scl(-1 * Constants.COEFF_REBOND * Gdx.graphics.getDeltaTime());
+		direction.add(this.getPosition());
+		this.force=direction;
+		
+	}
 	@Override
 	public void update(float dt)
 	{
@@ -98,7 +113,9 @@ public abstract class Vivant extends GameObject {
 				if(lgo.get(i) instanceof Vivant)
 				{
 					if(((Vivant) lgo.get(i)).body.overlaps(this.body)) {
+						rebond((Vivant) lgo.get(i));
 						if(!lgo.get(i).tags.contains(this.tags.get(0), false)) { // A finir: ca marche que s'il y a un seul tag dans tags
+							
 							this.attaquer(((Vivant) lgo.get(i)));
 							System.out.println(">>>>>>>"+this.getClass());
 						}
@@ -108,23 +125,23 @@ public abstract class Vivant extends GameObject {
 				else if (lgo.get(i) instanceof Bonus) {
 					if(((Bonus) lgo.get(i)).getBody().overlaps(this.body)) {
 						this.attraperBonus((Bonus) lgo.get(i));
-						System.out.println(">>>>>>>>"+this.getClass());
+						System.out.println(">>>i>>>>>"+this.getClass());
 					}
 				}
 			}
 		}
 		
 		if(this.transform.getY() < Constants.MIN_Y) {
-			this.transform.setY(Constants.MIN_Y);
+			this.newtonPhysic.setY(Constants.MIN_Y);
 		}
 		else if(this.transform.getY() > Constants.MAX_Y) {
-			this.transform.setY(Constants.MAX_Y);
+			this.newtonPhysic.setY(Constants.MAX_Y);
 		}
 		else if(this.transform.getX() > Constants.MAX_X) {
-			this.transform.setX(Constants.MAX_X);
+			this.newtonPhysic.setX(Constants.MAX_X);
 		}
 		else if(this.transform.getX() < Constants.MIN_X) {
-			this.transform.setX(Constants.MIN_X);
+			this.newtonPhysic.setX(Constants.MIN_X);
 		}
 		
 		this.body.setPosition(this.transform.getPosition());
