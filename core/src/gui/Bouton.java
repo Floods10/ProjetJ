@@ -149,6 +149,6 @@ public class Bouton{
 		this.generator.dispose();
 		this.texture.dispose();
 		this.font.dispose();
-		sound.dispose();
+		
 	}
 }
