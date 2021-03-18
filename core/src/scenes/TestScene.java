@@ -3,8 +3,8 @@ package scenes;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 
 import gui.Bouton;
 import gui.GuiElement;
@@ -12,47 +12,43 @@ import managers.GameSceneManager;
 import utils.Constants;
 import utils.Resizer;
 
-public class Home extends GameScene {
+public class TestScene extends GameScene {
 
 	private GuiElement gameTitleText;
 	private Bouton boutonstart;
 	private Bouton boutonquit;
-	private BitmapFont fontTexte;
-	private SpriteBatch batch;
 
-	private static final int EXIT_BUTTON_Y = 500;
+	static Texture exitButtonActive = new Texture("PNG/exit_unclick.png");
+	static Texture startButtonActive = new Texture("PNG/start_unclick.png");
 	static Texture buttonUnActive = new Texture("PNG/button_unclick.png");
 	static Texture buttonActive = new Texture("PNG/button_click.png");
 	static Texture buttonDisable = new Texture("PNG/button_disable.png");
-	Sound btSound=Gdx.audio.newSound(Gdx.files.internal("boutonSound.wav"));
+	//	private BitmapFont fontTexte;
+	private SpriteBatch batch;
 
-	public Home(GameSceneManager gsm) {
-		super(gsm);
+	//Texture exitButtonInactive;
+
+	public TestScene(GameSceneManager gsm) {
 		
+		super(gsm);
 		this.cam.setToOrtho(false, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGH);
 		this.setBackground(Resizer.resize("PNG/home.png"));
 		this.setSceneMusic("homeMusic.mp3");
 		if (Constants.PLAY_MUSIC) {
 			this.sceneMusic.play();}
-		
 		batch = new SpriteBatch();
-		fontTexte= new BitmapFont();
+		//		fontTexte= new BitmapFont();
 		String fontPath = "fonts/AgentOrange.ttf";
-		String fontPath2 = "fonts/Andreas.ttf";
-		
-		this.gameTitleText = new GuiElement(null, EXIT_BUTTON_Y+750, fontPath, Constants.GAME_TITLE, 180);
-		
-		boutonstart= new Bouton(this,buttonUnActive,null,EXIT_BUTTON_Y+200,"START",fontPath2, 60);
-		boutonstart.setTexDown(buttonActive);
-		boutonstart.setTexOver(buttonActive);
-		boutonstart.setTexDisable(buttonDisable);
-		boutonstart.setSound(btSound);
-		
-		boutonquit= new Bouton(this,buttonUnActive,null,EXIT_BUTTON_Y,"QUIT",fontPath2, 60);
+		//		this.gameTitleText = new GuiElement(null, EXIT_BUTTON_Y+750, fontPath, Constants.GAME_TITLE, 180);
+		//		this.gameTitleText.setTexture(exitButtonActive);
+		this.boutonstart= new Bouton(this,exitButtonActive,null,1000);
+		this.boutonquit= new Bouton(this,buttonUnActive,null,700,"Quit",null, 70);
 		boutonquit.setTexDown(buttonActive);
 		boutonquit.setTexOver(buttonActive);
 		boutonquit.setTexDisable(buttonDisable);
-		boutonstart.setSound(btSound);
+
+		Sound sound=Gdx.audio.newSound(Gdx.files.internal("boutonSound.wav"));
+		boutonquit.setSound(sound);
 
 	}
 
@@ -60,19 +56,19 @@ public class Home extends GameScene {
 	@Override
 	protected void handleInput() {
 
-		boutonstart.isOver();
 		boutonquit.isOver();
 		
-
 		if(boutonstart.isclicked()) {
-			System.out.println("Start Active");
-			this.gsm.set(new PlayScene(this.gsm));
+			System.out.println("disable Active");
+			if(!boutonquit.isDisabled()) {boutonquit.setDisabled(true);}
+			else {boutonquit.setDisabled(false);}
 		}
 
 		if(boutonquit.isclicked()) {
 			System.out.println("Exit Active");
-			Gdx.app.exit();
+			//Gdx.app.exit();
 		}
+
 
 	}
 
@@ -88,10 +84,10 @@ public class Home extends GameScene {
 		sb.begin();
 		sb.setProjectionMatrix(this.cam.combined);
 		sb.draw(this.background,0,0);
-		this.gameTitleText.draw(sb);
+		//		this.gameTitleText.draw(sb);
 		this.boutonstart.draw(sb);
 		this.boutonquit.draw(sb);
-		fontTexte.draw(batch, "test", 100, 100); 
+		//fontTexte.draw(batch, "test", 100, 100); 
 		sb.end();
 		batch.end();
 
@@ -100,9 +96,9 @@ public class Home extends GameScene {
 	@Override
 	public void dispose() {
 		this.background.dispose();
-		this.gameTitleText.dispose();
+		//		this.gameTitleText.dispose();
+		this.sceneMusic.dispose();
 		this.boutonstart.dispose();
 		this.boutonquit.dispose();
-		this.sceneMusic.dispose();
 	}
 }

@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import managers.GameSceneManager;
 import scenes.Home;
-//import test.TestAnim;
 
 public class Launcher extends ApplicationAdapter {
 	
