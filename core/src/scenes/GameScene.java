@@ -36,5 +36,12 @@ public abstract class GameScene {
 		this.sceneMusic = Gdx.audio.newMusic(Gdx.files.internal(pathMusic));
 		this.sceneMusic.setLooping(true);
 	}
+	
+	public OrthographicCamera getCam() {
+		return this.cam;
+		
+	}
+	
+	
   
 }
