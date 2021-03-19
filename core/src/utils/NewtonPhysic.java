@@ -31,10 +31,10 @@ public class NewtonPhysic {
 	public void updatePosition(float dt) {
 		a_n.x = go.getForce().x/go.getMasse();
 		a_n.y = go.getForce().y/go.getMasse();
-		if(go instanceof Monstre)
-		{
-			System.out.println("FLAG1  XN ="+x_n+"\n"+go.getForce());
-		}
+//		if(go instanceof Monstre)
+//		{
+//			System.out.println("FLAG1  XN ="+x_n+"\n"+go.getForce());
+//		}
 		
 		Vector2 frottement = new Vector2(v_n);
 		frottement.nor();
@@ -52,10 +52,10 @@ public class NewtonPhysic {
 
 		go.setPosition(x_n);
 
-		if(go instanceof Monstre)
-		{
-			System.out.println("FLAG2  XN ="+x_n);
-		}
+//		if(go instanceof Monstre)
+//		{
+//			System.out.println("FLAG2  XN ="+x_n);
+//		}
 
 	}
 
