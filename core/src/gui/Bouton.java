@@ -42,6 +42,7 @@ public class Bouton{
 		realY = (y==null)? (int)(Constants.WINDOW_HEIGH)-(texture.getHeight()/2) : (int)y;
 		this.transform = new Transform(realX, realY);
 	}
+	
 
 	public Bouton(GameScene scene ,Texture up, Integer x, Integer y, String text, String fontPath, int sizeText) {
 		int realX=0, realY=0;
@@ -49,7 +50,7 @@ public class Bouton{
 		this.texture = up;
 		this.texUp = up;
 		this.text=text;
-		this.generator = (fontPath==null)? new FreeTypeFontGenerator(Gdx.files.internal("fonts/Wild.otf")) : new FreeTypeFontGenerator(Gdx.files.internal(fontPath));
+		this.generator = (fontPath==null)? new FreeTypeFontGenerator(Gdx.files.internal("fonts/Andreas.ttf")) : new FreeTypeFontGenerator(Gdx.files.internal(fontPath));
 		this.parameter = new FreeTypeFontParameter();
 		this.parameter.size=sizeText;
 		this.font = this.generator.generateFont(this.parameter);
@@ -113,7 +114,8 @@ public class Bouton{
 
 	public void draw(SpriteBatch sb, float x, float y) {
 		sb.draw(this.texture, x, y);
-		this.font.draw(sb, this.glyph, x+texture.getWidth()/2-this.glyph.width/2+add, y+this.texture.getHeight()-this.glyph.height+add);
+		//this.font.draw(sb, this.glyph, x+texture.getWidth()/2-this.glyph.width/2+add, y+this.texture.getHeight()-this.glyph.height+add);
+		this.font.draw(sb, this.glyph, x+texture.getWidth()/2-(this.glyph.width/2)+add, y+this.texture.getHeight()-(this.glyph.height/3)+add);
 	}
 
 	public void setTexte (String text) {
@@ -146,9 +148,9 @@ public class Bouton{
 	}
 
 	public void dispose() {
-		this.generator.dispose();
-		this.texture.dispose();
-		this.font.dispose();
+		//this.generator.dispose();
+		//this.texture.dispose();
+		//this.font.dispose();
 		
 	}
 }

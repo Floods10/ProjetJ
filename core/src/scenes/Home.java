@@ -20,7 +20,7 @@ public class Home extends GameScene {
 	private BitmapFont fontTexte;
 	private SpriteBatch batch;
 
-	private static final int EXIT_BUTTON_Y = 500;
+	private static final int EXIT_BUTTON_Y = 400;
 	static Texture buttonUnActive = new Texture("PNG/button_unclick.png");
 	static Texture buttonActive = new Texture("PNG/button_click.png");
 	static Texture buttonDisable = new Texture("PNG/button_disable.png");
@@ -30,7 +30,7 @@ public class Home extends GameScene {
 		super(gsm);
 		
 		this.cam.setToOrtho(false, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGH);
-		this.setBackground(Resizer.resize("PNG/home.png"));
+		this.setBackground(Resizer.resize("PNG/home2.png"));
 		this.setSceneMusic("homeMusic.mp3");
 		if (Constants.PLAY_MUSIC) {
 			this.sceneMusic.play();}
@@ -40,20 +40,21 @@ public class Home extends GameScene {
 		String fontPath = "fonts/AgentOrange.ttf";
 		String fontPath2 = "fonts/Andreas.ttf";
 		
-		this.gameTitleText = new GuiElement(null, EXIT_BUTTON_Y+750, fontPath, Constants.GAME_TITLE, 180);
+		this.gameTitleText = new GuiElement(null, 1600, fontPath, Constants.GAME_TITLE, 180);
 		
-		boutonstart= new Bouton(this,buttonUnActive,null,EXIT_BUTTON_Y+200,"START",fontPath2, 60);
+		boutonstart= new Bouton(this,buttonUnActive,null,EXIT_BUTTON_Y+300,"START",fontPath2, 100);
 		boutonstart.setTexDown(buttonActive);
 		boutonstart.setTexOver(buttonActive);
 		boutonstart.setTexDisable(buttonDisable);
 		boutonstart.setSound(btSound);
 		
-		boutonquit= new Bouton(this,buttonUnActive,null,EXIT_BUTTON_Y,"QUIT",fontPath2, 60);
+		boutonquit= new Bouton(this,buttonUnActive,null,EXIT_BUTTON_Y,"QUIT",fontPath2, 100);
 		boutonquit.setTexDown(buttonActive);
 		boutonquit.setTexOver(buttonActive);
 		boutonquit.setTexDisable(buttonDisable);
 		boutonstart.setSound(btSound);
 
+		
 	}
 
 
@@ -66,7 +67,7 @@ public class Home extends GameScene {
 
 		if(boutonstart.isclicked()) {
 			System.out.println("Start Active");
-			this.gsm.set(new PlayScene(this.gsm));
+			this.gsm.set(new ConfigScene(this.gsm));
 		}
 
 		if(boutonquit.isclicked()) {
