@@ -25,7 +25,9 @@ public class Constants {
 	public final static float FRICTION = 85.0f;
 	public final static float COEFF_REBOND = 10000000;
 	
-	public final static int MAX_BONUS = 10;
+	public final static float FIREBALL_VELOCITY_MULTIPLIER=5;
+	
+	public final static int MAX_BONUS = 0;
 	public final static float TIME_BONUS = 0.10f;
 
 	

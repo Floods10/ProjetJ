@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 import managers.GameSceneManager;
 import sprites.Bonus;
+import sprites.BouleDeFeu;
 import sprites.GameObject;
 import sprites.Heros;
 import sprites.Monstre;
@@ -93,7 +94,14 @@ public class PlayScene extends GameScene {
 		sb.begin();
 		sb.draw(this.background, 0,0);
 		for(GameObject go : this.gameObjects) {
-			go.draw(sb);
+			if(!(go instanceof BouleDeFeu))
+			{
+				go.draw(sb);
+			}
+			else
+			{
+				go.drawWithRotation(sb,(BouleDeFeu) go);
+			}
 		}
 		sb.end();
 	}
