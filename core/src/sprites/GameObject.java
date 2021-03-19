@@ -19,6 +19,7 @@ public abstract class GameObject {
 	
 	protected GameScene scene;
 	protected Texture texture;
+	protected AnimationManager am;
 	protected Transform transform;
 	//protected Array<String> tags;
 	protected HashMap<String, String> tags;
@@ -47,10 +48,13 @@ public abstract class GameObject {
 		if(isDead)
 		{
 			this.scene.gameObjects.removeValue(this, false);
+			if (this.am!=null) {
+				//
+			}
 		}
 		else {
 			if (this.text!=null) {
-				this.text.setTransform(this.transform.getX(), this.transform.getY()+1.2f*this.texture.getHeight()/2);
+				this.text.setTransform(this.transform.getX(), this.transform.getY()+100);
 			}
 			this.force.setZero();
 		}
@@ -61,7 +65,13 @@ public abstract class GameObject {
 	}
 	
 	public void draw(SpriteBatch sb) {
-		sb.draw(this.getTexture(), this.getTexturePosition().x, this.getTexturePosition().y);
+		if(this.texture!=null) {
+			sb.draw(this.getTexture(), this.getTexturePosition().x, this.getTexturePosition().y);
+		}
+		if (this.am!=null) {
+			this.getAm().renderInit(sb);
+			this.getAm().draw(sb);
+		}
 		if (this.text!=null) {
 			this.text.draw(sb);
 		}
@@ -88,7 +98,8 @@ public abstract class GameObject {
 			direction.scl(Constants.SPEED * Gdx.graphics.getDeltaTime());
 			direction.add(this.getPosition());
 			//this.setPosition(direction);
-			this.force=direction;
+			this.force.add(direction);
+			this.am.setAnim("front_Walk");
 		}
 	}
 	
@@ -101,7 +112,7 @@ public abstract class GameObject {
 		
 		if (lgo.size>1) {
 			do {
-				if (lgo.get(i).tags.get(tagKey).equals(tagValue) && !lgo.get(i).equals(this)) {
+				if (lgo.get(i).tags.keySet().contains(tagKey) && lgo.get(i).tags.get(tagKey).equals(tagValue) && !lgo.get(i).equals(this)) {
 					if (!minGot) {
 						min = this.transform.getPosition().dst(lgo.get(i).transform.getPosition());
 						tmp = lgo.get(i);
@@ -182,6 +193,22 @@ public abstract class GameObject {
 	public void attaquer(Vivant v, float attaque)
 	{
 		v.decreaseLife(attaque);
+	}
+
+	public AnimationManager getAm() {
+		return am;
+	}
+
+	public void setAm(AnimationManager am) {
+		this.am = am;
+	}
+
+	public HashMap<String, String> getTags() {
+		return tags;
+	}
+
+	public void setDead(boolean isDead) {
+		this.isDead = isDead;
 	}
 	
 	/*
