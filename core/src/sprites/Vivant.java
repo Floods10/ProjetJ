@@ -66,16 +66,19 @@ public abstract class Vivant extends GameObject {
 	public void attaqueEpee()
 	{
 		new Epee(this);
+		this.am.setAnim("front_Attack_1");
 	}
 	
 	public void bouleDeFeu()
 	{
 		BouleDeFeu fireBall = new BouleDeFeu(this);
+		this.am.setAnim("front_Attack_2");
 	}
 	
 	public void attaquer(Vivant v)
 	{
 		super.attaquer(v, v.attaque);
+		
 	}
 	public void attraperBonus(Bonus b) 
 	{
@@ -98,8 +101,15 @@ public abstract class Vivant extends GameObject {
 		increaseLife(-valeurBonus);
 		if(this.getVie() <= 0.0)
 		{
+			vie=0;
 			isDead = true ;
+			for(int k=0; k<this.scene.gameObjects.size; k++) {
+				if(this.scene.gameObjects.get(k) instanceof Heros) {
+					((Heros)this.scene.gameObjects.get(k)).setScore(((Heros)this.scene.gameObjects.get(k)).getScore()+100);
+				}
+			}
 		}
+		this.am.setAnim("front_Hurt");
 	}
 
 		// Vu que vivant est une classe abstraite, pas besoin de coder les methodes update et dispose 
@@ -116,7 +126,7 @@ public abstract class Vivant extends GameObject {
 	public void update(float dt)
 	{
 		super.update(dt);
-		this.text.setText(this.tags.get(0)+"\nAtt: "+Float.toString(this.attaque)+"\nVie: "+Float.toString(this.vie));
+		//this.text.setText(this.tags.get(0)+"\nAtt: "+Float.toString(this.attaque)+"\nVie: "+Float.toString(this.vie));
 		
 		Array<GameObject> lgo = this.scene.gameObjects;
 		for (int i = 0; i<lgo.size; i++) {
@@ -146,13 +156,13 @@ public abstract class Vivant extends GameObject {
 		if(this.transform.getY() < Constants.MIN_Y) {
 			this.newtonPhysic.setY(Constants.MIN_Y);
 		}
-		else if(this.transform.getY() > Constants.MAX_Y) {
+		if(this.transform.getY() > Constants.MAX_Y) {
 			this.newtonPhysic.setY(Constants.MAX_Y);
 		}
-		else if(this.transform.getX() > Constants.MAX_X) {
+		if(this.transform.getX() > Constants.MAX_X) {
 			this.newtonPhysic.setX(Constants.MAX_X);
 		}
-		else if(this.transform.getX() < Constants.MIN_X) {
+		if(this.transform.getX() < Constants.MIN_X) {
 			this.newtonPhysic.setX(Constants.MIN_X);
 		}
 		
