@@ -25,7 +25,8 @@ public class Monstre extends Vivant{
 		super(scene, Constants.VIE_MONSTRE, Constants.ATTAQUE_MONSTRE, Constants.VITESSE_MONSTRE, tags);
 		this.texture = new Texture("PNG/greenery_2.png");
 		this.transform = new Transform(new Vector2(x, y));
-		float radius = Math.min(this.texture.getHeight(),this.texture.getWidth())/2;
+		//float radius = Math.min(this.texture.getHeight(),this.texture.getWidth())/2;
+		float radius =120.0f;
 		this.body = new Circle(this.transform.getPosition(), radius);	
 	}
 

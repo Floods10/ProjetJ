@@ -14,19 +14,24 @@ import com.badlogic.gdx.utils.Array;
 import gui.GuiElement;
 import scenes.GameScene;
 import scenes.Home;
+import sprites.animLib.H1AM;
+import sprites.animLib.M1AM;
+import sprites.animLib.W2AM;
 import utils.Constants;
 import utils.Transform;
 
 public final class Heros extends Vivant {
 
 	//private Circle body;
+	private int score=0;
 
 	public Heros(GameScene scene, float x, float y, HashMap<String, String> tags) {
 		super(scene, Constants.VIE_HEROS, Constants.ATTAQUE_HEROS, Constants.VITESSE_HEROS, tags);
-		this.texture = new Texture("PNG/stones_6.png");
+		//this.texture = new Texture("PNG/stones_6.png");
 		this.transform = new Transform(new Vector2(x, y)); // position initiale du heros
-		float radius = Math.min(this.texture.getHeight(),this.texture.getWidth())/2;
-		this.body = new Circle(this.transform.getPosition(), radius);
+		float radius = 55.0f;
+		this.body = new Circle(this.transform.getPosition(), radius);	
+		this.setAm(new H1AM(this));
 		this.transform.setRotation(0);
 	}
 
@@ -41,7 +46,8 @@ public final class Heros extends Vivant {
 	public void dispose() 
 	{
 		super.dispose();
-		this.texture.dispose();
+		if (this.texture!=null) {
+			this.texture.dispose();}
 	}
 
 	@Override
@@ -72,28 +78,33 @@ public final class Heros extends Vivant {
 				this.force.add(-1, 0);
 				this.force.nor();
 				this.force.scl(Constants.ACCELERATION);
+				this.am.setAnim("left_Walk");
 			}
 			if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
 				this.force.nor();
 				this.force.add(1, 0);
 				this.force.nor();
 				this.force.scl(Constants.ACCELERATION);
+				this.am.setAnim("right_Walk");
 			}
 			if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
 				this.force.nor();
 				this.force.add(0, 1);
 				this.force.nor();
 				this.force.scl(Constants.ACCELERATION);
+				this.am.setAnim("back_Walk");
 			}
 			if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 				this.force.nor();
 				this.force.add(0, -1);
 				this.force.nor();
 				this.force.scl(Constants.ACCELERATION);
+				this.am.setAnim("front_Walk");
 			}
 		} 
 		else {
 			this.force.setZero();
+			//this.am.setAnim("front_Idle");
 		}
 	}
 
@@ -101,6 +112,14 @@ public final class Heros extends Vivant {
 	public String toString() {
 		return "Heros [vie=" + vie + ", attaque=" + attaque + ", vitesse=" + vitesse + ", texture=" + texture
 				+ ", tags=" + tags + ", isDead=" + isDead + "]";
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 }
