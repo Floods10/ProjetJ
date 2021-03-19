@@ -1,10 +1,12 @@
 package scenes;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
 
+import gui.Bouton;
 import gui.GuiElement;
 import managers.GameSceneManager;
 import utils.Constants;
@@ -13,57 +15,66 @@ import utils.Resizer;
 public class Home extends GameScene {
 
 	private GuiElement gameTitleText;
-	private GuiElement startText;
-	private GuiElement quitText;
+	private Bouton boutonstart;
+	private Bouton boutonquit;
+	private BitmapFont fontTexte;
+	private SpriteBatch batch;
 
-	static Texture exitButtonActive = new Texture("PNG/exit_unclick.png");
-	static Texture startButtonActive = new Texture("PNG/start_unclick.png");
-	private static final int EXIT_BUTTON_Y = 500;
-	private static final int EXIT_BUTTON_X = (Constants.WINDOW_WIDTH/2)-(exitButtonActive.getWidth()/2);
-
-	//Texture exitButtonInactive;
+	private static final int EXIT_BUTTON_Y = 400;
+	static Texture buttonUnActive = new Texture("PNG/button_unclick.png");
+	static Texture buttonActive = new Texture("PNG/button_click.png");
+	static Texture buttonDisable = new Texture("PNG/button_disable.png");
+	Sound btSound=Gdx.audio.newSound(Gdx.files.internal("boutonSound.wav"));
 
 	public Home(GameSceneManager gsm) {
 		super(gsm);
+		
 		this.cam.setToOrtho(false, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGH);
-		this.setBackground(Resizer.resize("PNG/home.png"));
+		this.setBackground(Resizer.resize("PNG/home2.png"));
 		this.setSceneMusic("homeMusic.mp3");
 		if (Constants.PLAY_MUSIC) {
 			this.sceneMusic.play();}
-
+		
+		batch = new SpriteBatch();
+		fontTexte= new BitmapFont();
 		String fontPath = "fonts/AgentOrange.ttf";
-		this.startText = new GuiElement(EXIT_BUTTON_X-10, EXIT_BUTTON_Y+170, fontPath, "", 200);  
-		this.startText.setTexture(startButtonActive);
-		this.quitText = new GuiElement(EXIT_BUTTON_X,EXIT_BUTTON_Y, fontPath, "", 200);
-		this.quitText.setTexture(exitButtonActive);
-		this.gameTitleText = new GuiElement(null, EXIT_BUTTON_Y+750, fontPath, Constants.GAME_TITLE, 180);
+		String fontPath2 = "fonts/Andreas.ttf";
+		
+		this.gameTitleText = new GuiElement(null, 1600, fontPath, Constants.GAME_TITLE, 180);
+		
+		boutonstart= new Bouton(this,buttonUnActive,null,EXIT_BUTTON_Y+300,"START",fontPath2, 100);
+		boutonstart.setTexDown(buttonActive);
+		boutonstart.setTexOver(buttonActive);
+		boutonstart.setTexDisable(buttonDisable);
+		boutonstart.setSound(btSound);
+		
+		boutonquit= new Bouton(this,buttonUnActive,null,EXIT_BUTTON_Y,"QUIT",fontPath2, 100);
+		boutonquit.setTexDown(buttonActive);
+		boutonquit.setTexOver(buttonActive);
+		boutonquit.setTexDisable(buttonDisable);
+		boutonstart.setSound(btSound);
 
+		
 	}
 
 
 	@Override
 	protected void handleInput() {
 
+		boutonstart.isOver();
+		boutonquit.isOver();
+		
 
-		if(Gdx.input.isTouched()) {
-			Vector3 touchPos = new Vector3();
-			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-			System.out.println(touchPos);
-			this.cam.unproject(touchPos);
-			System.out.println(touchPos);
+		if(boutonstart.isclicked()) {
+			System.out.println("Start Active");
+			this.gsm.set(new ConfigScene(this.gsm));
+		}
 
-			//Start button
-			int x = Constants.WINDOW_WIDTH/2 - exitButtonActive.getWidth()/2;
-			if (touchPos.x < x+ (exitButtonActive.getWidth())  && touchPos.x > x &&  touchPos.y > EXIT_BUTTON_Y+170  && touchPos.y < EXIT_BUTTON_Y+170+ (exitButtonActive.getHeight())) {
-				this.gsm.set(new PlayScene(this.gsm));
-			}
-			//Exit button
-			if (touchPos.x < x+ (exitButtonActive.getWidth())  && touchPos.x > x &&  touchPos.y > EXIT_BUTTON_Y  && touchPos.y < EXIT_BUTTON_Y+ (exitButtonActive.getHeight())) {
-				Gdx.app.exit();
-			}
+		if(boutonquit.isclicked()) {
+			System.out.println("Exit Active");
+			Gdx.app.exit();
+		}
 
-
-		}	
 	}
 
 	@Override
@@ -73,13 +84,17 @@ public class Home extends GameScene {
 
 	@Override
 	public void render(SpriteBatch sb) {
+
+		batch.begin();
 		sb.begin();
 		sb.setProjectionMatrix(this.cam.combined);
 		sb.draw(this.background,0,0);
 		this.gameTitleText.draw(sb);
-		this.startText.draw(sb);
-		this.quitText.draw(sb);
+		this.boutonstart.draw(sb);
+		this.boutonquit.draw(sb);
+		fontTexte.draw(batch, "test", 100, 100); 
 		sb.end();
+		batch.end();
 
 	}
 
@@ -87,8 +102,8 @@ public class Home extends GameScene {
 	public void dispose() {
 		this.background.dispose();
 		this.gameTitleText.dispose();
-		this.startText.dispose();
-		this.quitText.dispose();
+		this.boutonstart.dispose();
+		this.boutonquit.dispose();
 		this.sceneMusic.dispose();
 	}
 }

@@ -5,6 +5,8 @@ public class Constants {
 //	public final static int VIEWPORT_WIDTH = 760;
 //	public final static int VIEWPORT_HEIGH = 1280;
 
+	public final static String ASSETS_PATH = "C:/Users/utilisateur/eclipse-workspace/ProjetJ/core/assets/";
+	
 	public final static int WINDOW_WIDTH = 3000;
 	public final static int WINDOW_HEIGH =1800;
 	
@@ -16,7 +18,7 @@ public class Constants {
 	public final static int MIN_X = PAD;
 	public final static int MAX_X = WINDOW_WIDTH-PAD;
 	
-	public final static int MIN_Y = 400;
+	public final static int MIN_Y = 505;
 	public final static int MAX_Y = WINDOW_HEIGH-PAD;
 	
 	public final static int SPEED = 1000000;
@@ -25,7 +27,9 @@ public class Constants {
 	public final static float FRICTION = 85.0f;
 	public final static float COEFF_REBOND = 10000000;
 	
-	public final static int MAX_BONUS = 10;
+	public final static float FIREBALL_VELOCITY_MULTIPLIER=5;
+	
+	public final static int MAX_BONUS = 0;
 	public final static float TIME_BONUS = 0.10f;
 
 	
