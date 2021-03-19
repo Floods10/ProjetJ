@@ -4,9 +4,11 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
 import gui.GuiElement;
@@ -24,7 +26,8 @@ public final class Heros extends Vivant {
 		this.texture = new Texture("PNG/stones_6.png");
 		this.transform = new Transform(new Vector2(x, y)); // position initiale du heros
 		float radius = Math.min(this.texture.getHeight(),this.texture.getWidth())/2;
-		this.body = new Circle(this.transform.getPosition(), radius);	
+		this.body = new Circle(this.transform.getPosition(), radius);
+		this.transform.setRotation(0);
 	}
 
 	public Heros(GameScene scene, HashMap<String, String> tags) {
@@ -57,7 +60,7 @@ public final class Heros extends Vivant {
 			this.attaqueEpee();
 		}
 		
-		if(Gdx.input.isKeyJustPressed(Input.Keys.G))
+		if(Gdx.input.isButtonJustPressed(Input.Buttons.RIGHT))
 		{
 			this.bouleDeFeu();
 		}

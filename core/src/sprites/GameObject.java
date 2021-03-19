@@ -4,6 +4,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
@@ -64,6 +65,13 @@ public abstract class GameObject {
 		if (this.text!=null) {
 			this.text.draw(sb);
 		}
+	}
+	
+	public void drawWithRotation(SpriteBatch sb, BouleDeFeu fireBall)
+	{
+		//sb.draw(new TextureRegion(fireBall.texture), fireBall.getX(), fireBall.getY(), fireBall.originX, fireBall.originY, (float) fireBall.texture.getWidth(), (float) fireBall.texture.getHeight(), 1.0f, 1.0f, (float) (fireBall.rotation*180/Math.PI));
+		sb.draw(new TextureRegion(fireBall.texture), fireBall.getX(), fireBall.getY(), 0.0f, 0.0f, (float) fireBall.texture.getWidth(), (float) fireBall.texture.getHeight(), 1.0f, 1.0f, (float) (fireBall.rotation*180/Math.PI));
+		//sb.draw(region, x, y, originX, originY, width, height, scaleX, scaleY, rotation);
 	}
 	
 	public void dispose() {
