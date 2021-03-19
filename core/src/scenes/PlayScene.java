@@ -85,27 +85,28 @@ public class PlayScene extends GameScene {
 		tags.put("equipe", "bonus");;
 
 
-		Monstre m = new Monstre(this, 37, 293, tagsE1);//
-		m.setAm(new M2AM(m));
-		this.monstres.add(m);
+//		Monstre m = new Monstre(this, 100, 500, tagsE1);//
+//		m.setAm(new M2AM(m));
+//		this.monstres.add(m);
+//		
+//		m = new Monstre(this, 1400, 1400, tagsE1);//
+//		m.setAm(new M2AM(m));
+//		this.monstres.add(m);
 		
-		m = new Monstre(this, 127, 357, tagsE1);//
-		m.setAm(new M2AM(m));
-		this.monstres.add(m);
-		
-		m = new Monstre(this, 216, 422, tagsE1);//
-		m.setAm(new M2AM(m));
-		this.monstres.add(m);
-		
-		m = new Monstre(this, 326, 66, tagsE2);
+//		m = new Monstre(this, 216, 422, tagsE1);//
+//		m.setAm(new M2AM(m));
+//		this.monstres.add(m);
+//		
+		Monstre m;
+		m = new Monstre(this, 2400, 1400, tagsE2);
 		m.setAm(new M3AM(m));
 		this.monstres2.add(m);
-		
-		m = new Monstre(this, 487, 93, tagsE2);
-		m.setAm(new M3AM(m));
-		this.monstres2.add(m);
-		
-		m = new Monstre(this, 584, 211, tagsE2);
+//		
+		//m = new Monstre(this, 2100, 1000, tagsE2);
+		//m.setAm(new M3AM(m));
+		//this.monstres2.add(m);
+//		
+		m = new Monstre(this, 2400, 700, tagsE2);
 		m.setAm(new M3AM(m));
 		this.monstres2.add(m);
 		

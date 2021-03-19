@@ -126,7 +126,7 @@ public abstract class Vivant extends GameObject {
 	public void update(float dt)
 	{
 		super.update(dt);
-		this.text.setText(this.tags.get(0)+"\nAtt: "+Float.toString(this.attaque)+"\nVie: "+Float.toString(this.vie));
+		//this.text.setText(this.tags.get(0)+"\nAtt: "+Float.toString(this.attaque)+"\nVie: "+Float.toString(this.vie));
 		
 		Array<GameObject> lgo = this.scene.gameObjects;
 		for (int i = 0; i<lgo.size; i++) {

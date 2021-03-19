@@ -45,10 +45,10 @@ public class BouleDeFeu extends Attaque
 		//rotation = (float) Math.atan( (((Coords.y+1)/2*1800) - originY) / ((Coords.x+1)/2*3000) - originX);
 		directionFireBall = new Vector2( ((Coords.x+1)/2*3000) - originX, ((Coords.y+1)/2*1800) - originY);
 		directionFireBall.nor();
-		System.out.println("Angle2="+(Math.atan2(directionFireBall.y, directionFireBall.x))%(2*Math.PI));
+		//System.out.println("Angle2="+(Math.atan2(directionFireBall.y, directionFireBall.x))%(2*Math.PI));
 		if(Math.atan2(directionFireBall.y, directionFireBall.x)%(2*Math.PI) < 0)
 		{
-			System.out.println("Angle2="+(2*Math.PI+Math.atan2(directionFireBall.y, directionFireBall.x))%(2*Math.PI));
+			//System.out.println("Angle2="+(2*Math.PI+Math.atan2(directionFireBall.y, directionFireBall.x))%(2*Math.PI));
 			rotation = (float) ((2*Math.PI+Math.atan2(directionFireBall.y, directionFireBall.x))%(2*Math.PI));
 			//owner.transform.setRotation(rotation);
 		}
@@ -59,19 +59,6 @@ public class BouleDeFeu extends Attaque
 			//owner.transform.setRotation(rotation);
 		}
 
-		//if to compute the rotation angle of the FB and set the owner = heros rotation to this angle. 4 possible arctan :up, left, right, down
-		if(directionFireBall.angleRad()%(Math.PI*2) < Math.PI/4 || directionFireBall.angleRad()%(Math.PI*2) > Math.PI/4*7)
-		{
-		}
-		else if(directionFireBall.angleRad()%(Math.PI*2) > Math.PI/4*3  && directionFireBall.angleRad()%(Math.PI*2) < Math.PI/4*5)
-		{
-		}
-		else if(directionFireBall.angleRad()%(Math.PI*2) > Math.PI/4*3  && directionFireBall.angleRad()%(Math.PI*2) < Math.PI/4*5)
-		{
-		}
-		else
-		{
-		}
 		directionFireBall.x*=Constants.FIREBALL_VELOCITY_MULTIPLIER; // FB velocity multiplier
 		directionFireBall.y*=Constants.FIREBALL_VELOCITY_MULTIPLIER; // FB velocity multiplier
 //		System.out.println("DirFB = "+directionFireBall);
