@@ -37,7 +37,7 @@ public abstract class GameObject {
 		this.tags = tags;
 		this.scene.gameObjects.add(this);
 		this.isDead = false ;
-		this.text = new GuiElement("fonts/orange juice 2.0.ttf", "", 24);
+		//this.text = new GuiElement("fonts/orange juice 2.0.ttf", "", 24);
 		this.force = new Vector2(0, 0);
 		this.masse = 20;
 	}

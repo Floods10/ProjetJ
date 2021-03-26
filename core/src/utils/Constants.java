@@ -29,7 +29,7 @@ public class Constants {
 	
 	public final static float FIREBALL_VELOCITY_MULTIPLIER=5;
 	
-	public final static int MAX_BONUS = 0;
+	public final static int MAX_BONUS = 5;
 	public final static float TIME_BONUS = 0.10f;
 
 	
