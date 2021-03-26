@@ -1,3 +1,6 @@
+body {
+    background-color: lemonchiffon;
+}
 
 #left{
   display: flex;
@@ -46,4 +49,17 @@ footer{
 }
 li a {
   text-decoration: none;
+}
+
+.lore
+{
+  font-size: 20;
+  height: 100;
+  background-color: lightblue;
+  text-align: center;
+}
+
+#freeWraithBtn
+{
+  display: none;
 }

@@ -1,0 +1,147 @@
+<html lang="fr">
+
+  <meta charset="utf-8">
+  <title>Responsive</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+  <head>
+
+  <div class="container-fluid panel">
+    <form class="row g-3">
+        <div class="col-2 container center">
+            <img src="logo.png" class="cadre" height="80%" alt="logo">
+        </div>
+
+        <div class="col-7 container center" style="">
+            <h1 id="title">GameProject</h1>
+        </div>
+
+        <div class="col-3 container">
+              <div class="col-12">
+                <label for="login" class="form-label"> Login </label>
+                <input type="text" class="form-control" id="login" placeholder="keke21">
+              </div>
+
+              <div class="col-12">
+                <label for="cpassword" class="form-label"> Mot de passe </label>
+                <input type="password" class="form-control" id="cpassword" placeholder="*****">
+              </div>
+<!--
+<div class="col-12">
+<button type="submit" class="btn btn-primary" >Connexion</button>
+</div>
+-->
+            <div class="col-12" style="height:10px"></div>
+        </div>
+    </form>
+</div>
+<head>
+
+<body>
+  <br><br>
+  <div class="container">
+    <!--Heros-->
+    <br>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2 d-flex align-items-center justify-content-center rounded-pill lore">LE HEROS</div>
+        <div class="col-4 d-flex align-items-center justify-content-center bg-success">
+          <img src="../core/assets/Animations/H1/front_Attack_1/0_Warrior_Attack_1_014.png" alt="Illustration Heros" width="200" height="200">
+        </div>
+        <div class="col-4">C'est vous! <br> Démenez vous pour tuer tous les méchants contre qui vous vous battez! <br>Pour cela, vous pouvez les attaquer à <a href="#divSword">l'épée</a> ou à la <a href="#divFireball">boule de feu</a>. </div>
+    </div>
+    <!--Monstre1-->
+    <br>
+    <div class="row" id="divMonster1">
+        <div class="col-1"></div>
+        <div class="col-2 d-flex align-items-center justify-content-center rounded-pill lore">GROUMPF LE GENTIL</div>
+        <div class="col-4 d-flex align-items-center justify-content-center bg-success">
+          <img src="../core/assets/Animations/M1/front_Idle/Minotaur_01_Idle_000.png" alt="Illustration Minotaure" width="300" height="200">
+        </div>
+        <div class="col-4">Un vilain minotaure qui vous veut du mal.</div>
+    </div>
+    <!--Monstre2-->
+    <br>
+    <div class="row" id="divMonster2">
+        <div class="col-1"></div>
+        <div class="col-2 d-flex align-items-center justify-content-center rounded-pill lore">HERBERT L'ACCORDEONISTE</div>
+        <div class="col-4 d-flex align-items-center justify-content-center bg-success">
+          <img src="../core/assets/Animations/M2/front_Idle/Minotaur_02_Idle_000.png" alt="Illustration Minotaure" width="300" height="200">
+        </div>
+        <div class="col-4">Joue aussi bien de l'accordéon que des percussions avec le crâne de ses ennemis.</div>
+    </div>
+    <!--Monstre3-->
+    <br>
+    <div class="row" id="divMonster3">
+        <div class="col-1"></div>
+        <div class="col-2 d-flex align-items-center justify-content-center rounded-pill lore">LYSITHEA GROS-SABOTS</div>
+        <div class="col-4 d-flex align-items-center justify-content-center bg-success">
+          <img src="../core/assets/Animations/M3/front_Idle/Minotaur_03_Idle_000.png" alt="Illustration Minotaure" width="300" height="200">
+        </div>
+        <div class="col-4">Elle reste coquette tout en frappant les ennemis.</div>
+    </div>
+    <!--Monstre3-->
+    <br>
+    <div class="row" id="divMonster4">
+        <div class="col-1"></div>
+        <div class="col-2 d-flex align-items-center justify-content-center rounded-pill lore">??!??!!?</div>
+        <div class="col-4 d-flex align-items-center justify-content-center bg-success">
+          <img src="../core/assets/Animations/Wraith_02/front_Idle/Wraith_02_Idle_000.png" id="freeWraithImage" alt="Illustration boss" width="300" height="200">
+        </div>
+        <div class="col-4" id="freeWraithText">Monstre légendaire. Ne la regardez pas trop ou elle trouvera un moyen de s'échapper.</div>
+        <div class="col-1"> <input type="button" value="Récompense gratuite" id="freeWraithBtn"></div>
+    </div>
+    <!--Epee-->
+    <br>
+    <div class="row" id="divSword">
+        <div class="col-1"></div>
+        <div class="col-2 d-flex align-items-center justify-content-center rounded-pill lore">EPEE</div>
+        <div class="col-4 d-flex align-items-center justify-content-center bg-success">
+          <img src="../core/assets/PNG/sprite_epee.png" alt="Illustration Epee" width="50" height="200">
+        </div>
+        <div class="col-4">Votre fidèle alliée pour combattre les monstres.</div>
+    </div>
+    <!--BDF-->
+    <br>
+    <div class="row" id="divFireball">
+        <div class="col-1"></div>
+        <div class="col-2 d-flex align-items-center justify-content-center rounded-pill lore">BOULE DE FEU</div>
+        <div class="col-4 d-flex align-items-center justify-content-center bg-success">
+          <img src="../core/assets/PNG/fireball/bdf_1.png" alt="Illustration boule de feu" width="200" height="100">
+        </div>
+        <div class="col-4">Une bonne boule de feu pour réchauffer le coeur de vos ennemis.</div>
+    </div>
+
+</div>
+
+
+</body>
+
+<footer>
+    <div class="container-fluid">
+            <div class="col-12 center">
+                <p id="copyRights">
+                  Copyright - 2021
+                </p>
+            </div>
+</footer>
+
+<script>
+  document.getElementById("freeWraithText").addEventListener("mouseenter", function( event ) {
+    freeWraithBtn.style.display = "block";
+  }, false);
+
+  freeWraithBtn.onclick = freeWraith;
+  function freeWraith()
+  {
+    freeWraithImage.style.display = "none";
+  }
+
+</script>
