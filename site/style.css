@@ -14,7 +14,6 @@
 
 .panel{
   background-color: #f9f9f9;
-
 }
 .center{
   display:flex;
@@ -32,4 +31,19 @@
   font-size: 500%;
   font-family: fantasy;
   color: darkgrey;
+}
+footer{
+  display: fixed;
+  background-color: grey;
+
+}
+#copyRights{
+  margin: 10px;
+}
+.content{
+  background-color: #f8f9fa;
+  height: 600px;
+}
+li a {
+  text-decoration: none;
 }
