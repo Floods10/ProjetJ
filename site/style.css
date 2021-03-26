@@ -14,6 +14,22 @@
 
 .panel{
   background-color: #f9f9f9;
-  border: solid #eaeaea 2px;
-  border-radius: 3%
+
+}
+.center{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.cadre{
+  border:solid grey 2px;
+  border-radius: 20%;
+}
+
+#title{
+  display:flex;
+  justify-content:center;
+  font-size: 500%;
+  font-family: fantasy;
+  color: darkgrey;
 }
