@@ -47,20 +47,85 @@
               <nav>
                 <ul>
                   <li>
-                    <a href="#">Acceuil</a>
+                    <a href="index.html">Acceuil</a>
                   </li>
                   <li>
-                    <a href="#">Inscription</a>
+                    <a href="signup.html">Inscription</a>
                   </li>
                   <li>
-                    <a href="#">Présentation</a>
+                    <a href="Lore.html">Présentation</a>
                   </li>
                 </ul>
               </nav>
           </div>
 
           <div class="col-sm-10 content">
+            <div class="content">
+              <div class="container">
+                <div class="col-12">
+                  <h2  class="text-center">Projet: le nouveau jeu des créateurs de test</h2>
+                  <p  class="text-center"> Le studio grp3, à qui l’on doit notamment test, vous dévoile leur nouveau jeu <b>projet</b>.
+                    Bien évidemment jouable seul, il s’agira d’un jeu close-world d’action-aventure-TPS-stratégie-réflexion-simulation dans un univers médiéval futuriste desertique décalé.
+                    Le jeu ne sortira probable pas à temps ni sur aucune consoles telles que Xbox One, PlayStation 4 et Switch pas plus que sur Xbox Series X|S et PS5.</p>
+                  </div>
+                </div>
+                <div class="col-8 offset-2">
+                  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" data-bs-interval="5000">
+                        <img src="img/screen_menu.png" class="d-block w-100" alt="Screen menu principale du jeu">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5 class="text-dark">Screen menu principale du jeu</h5>
+                          <p class="text-dark">Le plus beau menu jamais crée avec un bouton start et un quitter!! Et on peut même cliquer dessus!</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item" data-bs-interval="5000">
+                        <img src="img/screen_jeu.png" class="d-block w-100" alt="Screen ingame">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5 class="text-dark">Screen menu principale du jeu</h5>
+                          <p class="text-dark">Une interface jamais vue avec des montres et des héros!! Une Animation de folie :D et bien plus encore</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item" data-bs-interval="5000">
+                        <img src="img/screen_carac.png" class="d-block w-100" alt="Screen écran modification caractéristique héros">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5 class="text-dark">Screen écran modification caractéristique héros</h5>
+                          <p class="text-dark">Pour l'instant totalement inutile, mais un jour peut-être ...</p>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="col-8 offset-2"><p></p></div>
+                <div class="col-8 offset-2"><p></p></div>
+                <div class="col-4 offset-5">
+                  <a  type="button" class="btn btn-secondary" href="https://github.com/NathanCRUAUD/ProjetJordan" target="_blank">Get it on GIT</a>
+                  <button id="download" type="button" class="btn btn-success">Download</button>
+                  <br>
+                  <p></p>
+                  <!-- <div class="col-8 offset-2">
+                  <div class="progress">
+                    <div id="downloadBar" class="progress-bar" role="progressbar" style="" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div> -->
+                  </div>
+                </div>
 
+              </div>
+
+            </body>
           </div>
       </div>
     </div>
@@ -76,6 +141,23 @@
               </div>
   </footer>
 
-  <body>
-  </body>
+  <!-- <script>
+
+  var inter;
+  var pourc=0;
+  download.onclick=lancer;
+  downloadBar.style.display ='none';
+    function lancer(){setInterval(calculTimer,1000);downloadBar.style.display ='block';}
+
+    function calculTimer(){
+      pourc+=25;
+      console.log(pourc)
+      document.getElementsById("downloadBar").style="\"width: \"+pourc+\"%\"";
+      if(pourc==100){//alert("Sorry ça marche pas vraiment...");
+      clearInterval(inter);
+    }
+    }
+
+  </script> -->
+
 </html>

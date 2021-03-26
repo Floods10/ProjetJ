@@ -36,7 +36,8 @@ body {
   color: darkgrey;
 }
 footer{
-  display: fixed;
+  display: flex;
+  align-items: flex-end;
   background-color: grey;
 
 }
@@ -45,7 +46,7 @@ footer{
 }
 .content{
   background-color: #f8f9fa;
-  height: 600px;
+  /* height: 600px; */
 }
 li a {
   text-decoration: none;
@@ -62,4 +63,8 @@ li a {
 #freeWraithBtn
 {
   display: none;
+}
+
+#iscription{
+  height:100%;
 }
