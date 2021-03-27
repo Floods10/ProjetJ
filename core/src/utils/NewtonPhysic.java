@@ -3,7 +3,9 @@ package utils;
 import com.badlogic.gdx.math.Vector2;
 
 import sprites.GameObject;
+import sprites.Heros;
 import sprites.Monstre;
+import sprites.Orientation;
 
 public class NewtonPhysic {
 
@@ -12,6 +14,8 @@ public class NewtonPhysic {
 	private Vector2 v_n;
 	private Vector2 v_n_1;
 	private Vector2 x_n;
+	private float angle;
+	private Vector2 dir;
 
 
 	public NewtonPhysic(GameObject go) {
@@ -29,12 +33,12 @@ public class NewtonPhysic {
 		this.v_n_1 = new Vector2(0, 0);
 	}
 	public void updatePosition(float dt) {
+		dir = go.getPosition().cpy();
+	
+		
 		a_n.x = go.getForce().x/go.getMasse();
 		a_n.y = go.getForce().y/go.getMasse();
-//		if(go instanceof Monstre)
-//		{
-//			System.out.println("FLAG1  XN ="+x_n+"\n"+go.getForce());
-//		}
+
 		
 		Vector2 frottement = new Vector2(v_n);
 		frottement.nor();
@@ -50,13 +54,15 @@ public class NewtonPhysic {
 		v_n_1.x = v_n.x;
 		v_n_1.y = v_n.y;
 
+		
+		dir.sub(x_n);
+		angle = dir.angleDeg();
+		if (angle<=45 || angle>315) {this.go.setOrientation(Orientation.Ouest);}
+		else if (angle<45 || angle<=135) {this.go.setOrientation(Orientation.Sud);}
+		else if (angle<135 || angle<=225) {this.go.setOrientation(Orientation.Est);}
+		else if (angle<225 || angle<=315) {this.go.setOrientation(Orientation.Nord);}
+	
 		go.setPosition(x_n);
-
-//		if(go instanceof Monstre)
-//		{
-//			System.out.println("FLAG2  XN ="+x_n);
-//		}
-
 	}
 
 	public void setPosition(Vector2 v) {
@@ -83,6 +89,10 @@ public class NewtonPhysic {
 	@Override
 	public String toString() {
 		return "NewtonPhysic [a_n=" + a_n + ", v_n=" + v_n + ", v_n_1=" + v_n_1 + ", x_n=" + x_n + "]";
+	}
+
+	public Vector2 getVitesse() {
+		return v_n;
 	}
 
 }

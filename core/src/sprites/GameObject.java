@@ -21,6 +21,7 @@ public abstract class GameObject {
 	protected Texture texture;
 	protected AnimationManager am;
 	protected Transform transform;
+	protected Orientation orientation;
 	//protected Array<String> tags;
 	protected HashMap<String, String> tags;
 	protected boolean isDead;
@@ -40,6 +41,7 @@ public abstract class GameObject {
 		//this.text = new GuiElement("fonts/orange juice 2.0.ttf", "", 24);
 		this.force = new Vector2(0, 0);
 		this.masse = 20;
+		this.orientation = Orientation.Sud;
 	}
 	
 	public void update(float dt)
@@ -209,6 +211,14 @@ public abstract class GameObject {
 
 	public void setDead(boolean isDead) {
 		this.isDead = isDead;
+	}
+
+	public void setOrientation(Orientation orientation) {
+		this.orientation = orientation;
+	}
+
+	public Orientation getOrientation() {
+		return orientation;
 	}
 	
 	/*
